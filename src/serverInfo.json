@@ -1,0 +1,59 @@
+{
+    "name": "stage1st servers info",
+    "servers": [
+        {
+            "instanceId": "i-bp1iu8yarz42qqagrmjt",
+            "name": "S1数据库长期2",
+            "publicIP": "",
+            "privateIP": "192.168.1.171",
+            "cores": "8",
+            "ram": "16G",
+            "bandwidth": "0"
+        },
+        {
+            "instanceId": "i-bp1458r5xhk7lduoe0g8",
+            "name": "S1前端长期5",
+            "publicIP": "47.97.161.219",
+            "privateIP": "192.168.1.170",
+            "cores": "4",
+            "ram": "8G",
+            "bandwidth": "12Mbps"
+        },
+        {
+            "instanceId": "i-bp1h224i4xtl79j9lt7c",
+            "name": "S1前端长期3",
+            "publicIP": "118.31.36.191",
+            "privateIP": "192.168.1.168",
+            "cores": "2",
+            "ram": "4G",
+            "bandwidth": "5Mbps"
+        },
+        {
+            "instanceId": "i-bp114fhehhzlxvgxt9s8",
+            "name": "S1日志服务器",
+            "publicIP": "116.62.138.125",
+            "privateIP": "192.168.1.166",
+            "cores": "1",
+            "ram": "1G",
+            "bandwidth": "5Mbps（峰值）"
+        },
+        {
+            "instanceId": "i-bp1ayvrn26pt4ymkoth4",
+            "name": "S1Ucenter服务器",
+            "publicIP": "47.96.129.2",
+            "privateIP": "192.168.1.165",
+            "cores": "1",
+            "ram": "2G",
+            "bandwidth": "5Mbps"
+        },
+        {
+            "instanceId": "i-bp1fvnzjphkaeymdxwja",
+            "name": "S1附件服务器",
+            "publicIP": "47.96.185.41",
+            "privateIP": "192.168.1.164",
+            "cores": "1",
+            "ram": "2G",
+            "bandwidth": "5Mbps"
+        }
+    ]
+}

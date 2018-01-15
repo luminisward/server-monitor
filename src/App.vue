@@ -1,23 +1,25 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <el-button @click="startHacking">Start</el-button>
-    </div>
-  </div>
+<el-container>
+  <el-header>
+    <DateTimePicker/>
+  </el-header>
+  <el-container>
+    <el-aside><NavMenu/></el-aside>
+    <el-main><Tabs/></el-main>
+  </el-container>
+</el-container>
 </template>
 
 <script>
+import Tabs from './components/Tabs.vue'
+import NavMenu from './components/NavMenu.vue'
+import DateTimePicker from './components/DateTimePicker.vue'
+
 export default {
-  methods: {
-    startHacking () {
-      this.$notify({
-        title: 'It works!',
-        type: 'success',
-        message: 'We\'ve laid the ground work for you. It\'s time for you to build something epic!',
-        duration: 5000
-      })
-    }
+  components: {
+    DateTimePicker,
+    NavMenu,
+    Tabs
   }
 }
 </script>
