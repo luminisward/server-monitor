@@ -11,16 +11,22 @@
 </template>
 
 <script>
-import Tabs from './components/Tabs.vue'
-import NavMenu from './components/NavMenu.vue'
-import DateTimePicker from './components/DateTimePicker.vue'
+import Tabs from './Tabs.vue'
+import NavMenu from './NavMenu.vue'
+import DateTimePicker from './DateTimePicker.vue'
 
 export default {
   components: {
     DateTimePicker,
     NavMenu,
     Tabs
+  },
+  computed: {
+    count(){
+      return this.$store.state.count
+    } 
   }
+  
 }
 </script>
 
