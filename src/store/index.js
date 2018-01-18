@@ -5,28 +5,32 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-      count: 0,
+      period: '60',
       metric: 'CPUUtilization',
-      response: ''
+      responseData: [],
+      instanceId: 'i-bp1iu8yarz42qqagrmjt',
+      startEndTime: []
     },
     mutations: {
-      increment (state) {
-        state.count++
-      },
       setMetric (state, n) {
         state.metric = n
       },
+      setInstanceId (state, n) {
+        state.instanceId = n
+      },
       setResponse (state, n) {
-        state.response = n
+        state.responseData = n
+      },
+      setStartEndTime (state, n) {
+        state.startEndTime = n
+      },
+      setPeriod(state, n) {
+        state.period = n
       }
     },
     getters: {
-      // getTableData: state => {
-      //   if (state.response){
-      //     return state.response.data.Datapoints
-      //   }else{
-      //     return {}
-      //   }
-      // }
+      getStartEndTimestamp: state => {
+        return state.startEndTime.map(time => new Date(time).getTime())
+      }
     }
   })

@@ -1,7 +1,7 @@
 <template>
   <div class="block">
     <el-date-picker
-      v-model="value4"
+      v-model="startEndTime"
       type="datetimerange"
       :picker-options="pickerOptions2"
       range-separator="至"
@@ -9,17 +9,35 @@
       end-placeholder="结束日期"
       align="right">
     </el-date-picker>
+    <PeriodSelect/>
     <Button/>
   </div>
 </template>
 
 <script>
   import Button from './RequestButton.vue'
+  import PeriodSelect from './PeriodSelect.vue'
   export default {
     data() {
       return {
         pickerOptions2: {
           shortcuts: [{
+            text: '最近一小时',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 1);
+              picker.$emit('pick', [start, end]);
+            }
+          },{
+            text: '最近一天',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 1);
+              picker.$emit('pick', [start, end]);
+            }
+          },{
             text: '最近一周',
             onClick(picker) {
               const end = new Date();
@@ -27,30 +45,24 @@
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
               picker.$emit('pick', [start, end]);
             }
-          }, {
-            text: '最近一个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: '最近三个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit('pick', [start, end]);
-            }
           }]
-        },
-        value3: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
-        value4: ''
-      };
+        }
+      }
     },
     components: {
-      Button
+      Button,
+      PeriodSelect
+    },
+    computed: {
+      startEndTime: {
+        get() {
+          return this.$store.state.startEndTime
+        },
+        set (value) {
+          this.$store.commit('setStartEndTime', value)
+        }
+      }
+
     }
   };
 </script>

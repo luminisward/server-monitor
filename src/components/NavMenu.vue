@@ -1,9 +1,7 @@
 <template>
     <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose">
+      default-active="i-bp1iu8yarz42qqagrmjt"
+      @select="handleSelect">
       <el-menu-item v-for="(server,key) in servers" :key="key" :index="server.instanceId">
         <span>{{ server.name }}</span>
       </el-menu-item>
@@ -12,6 +10,7 @@
 
 <script>
   import serverInfo from '../serverInfo.json'
+  import { mapMutations } from 'vuex'
 
   export default {
     data() {
@@ -20,11 +19,11 @@
       } 
     },
     methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
+      ...mapMutations([
+        'setInstanceId'
+      ]),
+      handleSelect(key) {
+        this.setInstanceId(key)
       }
     }
   }

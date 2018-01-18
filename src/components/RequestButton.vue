@@ -7,7 +7,10 @@
   import { mapState, mapMutations } from 'vuex'
   export default {
     computed: mapState([
-      'metric'
+      'metric',
+      'instanceId',
+      'startEndTime',
+      'period'
     ]),
     methods: {
       ...mapMutations([
@@ -15,14 +18,23 @@
       ]),
       request(){
         // console.log(this.metric)
-        axios.get('http://127.0.0.1:8010/api/QueryMetricLast/acs_ecs_dashboard/' + this.metric)
+        var config = {
+          method: 'get',
+          url: '/api/QueryMetricList/acs_ecs_dashboard',
+          params: {
+            metric: this.metric,
+            instanceId: this.instanceId,
+            startTime: this.$store.getters.getStartEndTimestamp[0],
+            endTime: this.$store.getters.getStartEndTimestamp[1],
+            period: this.period
+          }
+        }
+        axios(config)
           .then(response => {
-            this.setResponse(response)
-            console.log(this.$store.state.response)
+            this.setResponse(response.data.Datapoints)
           })
           .catch(error => {
             console.log(error)
-            console.log('API跪了')
           }
         )
       }
